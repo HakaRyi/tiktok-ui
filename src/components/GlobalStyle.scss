@@ -1,0 +1,31 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+
+:root {
+    --default-layout-header-height: 60px;
+    --default-layout-header-width: 1150px;
+
+    //Colors
+    --black: black;
+    --default-text-color: #333;
+}
+
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: 'Osward', sans-serif;
+    font-size: 1.6rem;
+    margin: 0 -15px;
+}
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: var(--default-text-color);
+    text-decoration: none;
+}
