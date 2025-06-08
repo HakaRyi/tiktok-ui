@@ -4,12 +4,32 @@ import Wrapper from '../Wrapper';
 
 import Tippy from '@tippyjs/react/headless';
 import MenuItems from '~/components/MenuItems';
+import { useState } from 'react';
+import Header from './Header';
 
 const cx = classNames.bind(styles);
 
 function Menu({ children, items = [] }) {
+    const [history, setHistory] = useState([{ data: items }]);
+    const current = history[history.length - 1];
+
     const renderItem = () => {
-        return items.map((item, index) => <MenuItems data={item} key={index} />);
+        return current.data.map((item, index) => {
+            const isParent = !!item.children;
+            console.log(`${item.title} is parent: ${isParent}`);
+            return (
+                <MenuItems
+                    data={item}
+                    key={index}
+                    onClick={() => {
+                        if (isParent) {
+                            console.log(item.children);
+                            setHistory((prev) => [...prev, item.children]);
+                        }
+                    }}
+                />
+            );
+        });
     };
 
     return (
@@ -19,7 +39,17 @@ function Menu({ children, items = [] }) {
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
-                    <Wrapper>{renderItem()}</Wrapper>
+                    <Wrapper>
+                        {history.length > 1 && (
+                            <Header
+                                title="Language"
+                                onBack={() => {
+                                    setHistory((prev) => prev.slice(0, prev.length - 1));
+                                }}
+                            />
+                        )}
+                        {renderItem()}
+                    </Wrapper>
                 </div>
             )}
         >

@@ -17,11 +17,13 @@ function Button({
     left_icon,
     className,
     right_icon,
+    onClick,
     ...passProps
 }) {
     let Comp = 'button';
 
     const props = {
+        onClick,
         ...passProps,
     };
 
