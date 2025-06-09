@@ -16,14 +16,12 @@ function Menu({ children, items = [] }) {
     const renderItem = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
-            console.log(`${item.title} is parent: ${isParent}`);
             return (
                 <MenuItems
                     data={item}
                     key={index}
                     onClick={() => {
                         if (isParent) {
-                            console.log(item.children);
                             setHistory((prev) => [...prev, item.children]);
                         }
                     }}
@@ -35,7 +33,7 @@ function Menu({ children, items = [] }) {
     return (
         <Tippy
             interactive
-            visible
+            delay={500}
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
@@ -52,6 +50,9 @@ function Menu({ children, items = [] }) {
                     </Wrapper>
                 </div>
             )}
+            onHide={() => {
+                setHistory(history.slice(0, 1));
+            }}
         >
             {children}
         </Tippy>

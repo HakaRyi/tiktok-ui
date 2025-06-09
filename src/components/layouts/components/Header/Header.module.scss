@@ -78,6 +78,27 @@
     }
 }
 
+//Actions
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.upload_icon {
+    color: white;
+    background-color: transparent;
+    font-size: 2rem;
+}
+
+.avartar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 18px;
+}
+
 .more_icon {
     color: white;
     font-size: 1.6rem;

@@ -1,5 +1,6 @@
 .menu-items {
     width: 224px;
+    overflow-x: hidden;
 }
 
 .menu-items .item {
@@ -46,4 +47,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.link {
+    max-width: 223.99px;
 }
