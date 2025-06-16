@@ -50,6 +50,28 @@
     cursor: pointer;
 }
 
+.clear-icon,
+.spinner {
+    position: absolute;
+    top: 50%;
+    right: 46px;
+    transform: translateY(-50%);
+}
+
+.spinner {
+    margin-right: 4px;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .search-btn {
     height: 100%;
     background-color: transparent;
