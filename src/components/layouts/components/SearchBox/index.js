@@ -52,48 +52,49 @@ function SearchBox() {
     }, [debounceValue]);
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchValue.length > 0}
-            render={(attrs) => {
-                console.log('Tippy render: ', searchResult);
-                return (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <Wrapper>
-                            {searchResult.length > 0 ? (
-                                searchResult.map((item) => {
-                                    return <AccountItem key={item.id} data={item} />;
-                                })
-                            ) : (
-                                <span>No results found.</span>
-                            )}
-                        </Wrapper>
-                    </div>
-                );
-            }}
-            onClickOutside={() => setShowResult(false)}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    type="text"
-                    placeholder="What to watch..."
-                    spellCheck="false"
-                    onFocus={() => setShowResult(true)}
-                />
-                {!!searchValue && !loading && (
-                    <button className={cx('clear-icon')} onClick={clearHandler}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
+        <div>
+            <HeadlessTippy
+                interactive
+                visible={showResult && searchValue.length > 0}
+                render={(attrs) => {
+                    return (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <Wrapper>
+                                {searchResult.length > 0 ? (
+                                    searchResult.map((item) => {
+                                        return <AccountItem key={item.id} data={item} />;
+                                    })
+                                ) : (
+                                    <span>No results found.</span>
+                                )}
+                            </Wrapper>
+                        </div>
+                    );
+                }}
+                onClickOutside={() => setShowResult(false)}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        type="text"
+                        placeholder="What to watch..."
+                        spellCheck="false"
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear-icon')} onClick={clearHandler}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon className={cx('spinner')} icon={faSpinner} />}
+                    <button className={cx('search-btn')}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
-                )}
-                {loading && <FontAwesomeIcon className={cx('spinner')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

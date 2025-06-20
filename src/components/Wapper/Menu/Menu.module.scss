@@ -6,6 +6,12 @@
 .menu-items .item {
     display: flex;
     margin-left: 0;
+    background-color: #f1f4f6;
+}
+
+.items {
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .item {

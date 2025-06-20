@@ -1,10 +1,12 @@
 .wrapper {
     width: 100%;
     min-height: 2.4rem;
-    max-height: 60rem;
+    max-height: 40rem;
     box-shadow: 1px 1px 1px rgb(152, 152, 152);
     border-radius: 8px;
     background-color: rgb(241, 244, 246);
     padding-top: 8px;
     padding-bottom: 8px;
+    display: flex;
+    flex-direction: column;
 }
